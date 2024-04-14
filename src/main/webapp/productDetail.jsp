@@ -26,7 +26,7 @@
 					<li class="breadcrumb-item" aria-current="page"><a
 						href="${pageContext.request.contextPath}/">Trang chủ</a></li>
 					<li class="breadcrumb-item" aria-current="page"><a
-						href="${pageContext.request.contextPath}/category?id=${requestScope.category.id}">${requestScope.category.name}</a>
+						href="${pageContext.request.contextPath}/category?id=${requestScope.product.idTheLoai}">${requestScope.product.tenTheLoai}</a>
 					</li>
 					<li class="breadcrumb-item active" aria-current="page">${requestScope.product.ten}</li>
 				</ol>

@@ -24,6 +24,7 @@ public class Sach {
 	Double tongSao;
 	String tenTacGia;
 	String tenNxb;
+	String tenTheLoai;
 	public Sach() {
 		super();
 	}
@@ -115,6 +116,18 @@ public class Sach {
 	}
 
 	
+
+	public String getTenTheLoai() {
+		return tenTheLoai;
+	}
+
+
+
+	public void setTenTheLoai(String tenTheLoai) {
+		this.tenTheLoai = tenTheLoai;
+	}
+
+
 
 	public String getTenTacGia() {
 		return tenTacGia;
@@ -273,6 +286,18 @@ public class Sach {
 
 	public void setGiaNhap(Double giaNhap) {
 		this.giaNhap = giaNhap;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Sach [id=" + id + ", ten=" + ten + ", soLuongNhap=" + soLuongNhap + ", soLuongBan=" + soLuongBan
+				+ ", idNxb=" + idNxb + ", moTaSach=" + moTaSach + ", soTrang=" + soTrang + ", lanXuatBan=" + lanXuatBan
+				+ ", idTacGia=" + idTacGia + ", idTheLoai=" + idTheLoai + ", soSaoTB=" + soSaoTB + ", ngayThem="
+				+ ngayThem + ", urlImage=" + urlImage + ", giaBan=" + giaBan + ", giaNhap=" + giaNhap
+				+ ", phanTramGiamGia=" + phanTramGiamGia + ", tongBinhLuan=" + tongBinhLuan + ", tongSao=" + tongSao
+				+ ", tenTacGia=" + tenTacGia + ", tenNxb=" + tenNxb + ", tenTheLoai=" + tenTheLoai + "]";
 	}
 	
 	

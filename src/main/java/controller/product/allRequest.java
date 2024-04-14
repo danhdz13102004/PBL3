@@ -42,6 +42,7 @@ public class allRequest extends HttpServlet {
 		Sach sach = new Sach();
 		sach.setId(id);
 		sach = sachDao.selectById(sach);
+		System.out.println(sach);
 		request.setAttribute("product", sach);
 	}
 }

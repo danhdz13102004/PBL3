@@ -5,7 +5,6 @@ public class TheLoai {
 	String tenTheLoai;
 	
 	
-	
 	public TheLoai() {
 		super();
 	}

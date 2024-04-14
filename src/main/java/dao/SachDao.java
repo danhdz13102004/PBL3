@@ -55,7 +55,7 @@ public class SachDao implements InterfaceDAO<Sach> {
 			Connection con = JDBCUtil.getConnection();
 			String sql = "select sach.* from theloai\r\n"
 					+ "inner join sach on theloai.id = sach.idtheloai\r\n"
-					+ "where theloai.tentheloai = '" + theloai + "'\r\n"
+					+ "where theloai.id = '" + theloai + "'\r\n"
 					+ "order by sach.id asc\r\n"
 					+ "limit ? offset ?";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -82,11 +82,12 @@ public class SachDao implements InterfaceDAO<Sach> {
 		ArrayList<Sach> arr = new ArrayList<Sach>();
 		try {
 			Connection con = JDBCUtil.getConnection();
-			String sql = "SELECT sach.*, tacgia.tentacgia, nhaxuatban.tennxb \r\n"
+			String sql = "SELECT sach.*, tacgia.tentacgia, nhaxuatban.tennxb, theloai.tentheloai\r\n"
 					+ "FROM sach \r\n"
 					+ "INNER JOIN tacgia ON sach.idtacgia = tacgia.id \r\n"
 					+ "INNER JOIN nhaxuatban ON sach.idnxb = nhaxuatban.id \r\n"
-					+ "WHERE sach.id = '" + t.getId() +  "'";
+					+ "INNER JOIN theloai ON sach.idtheloai = theloai.id\r\n"
+					+ "WHERE sach.id = '" + t.getId() + "'";
 			PreparedStatement ps = con.prepareStatement(sql);
 			System.out.println(sql);
 			ResultSet rs = ps.executeQuery();
@@ -110,6 +111,7 @@ public class SachDao implements InterfaceDAO<Sach> {
 				sach.setPhanTramGiamGia(rs.getDouble("phantramgiamgia"));
 				sach.setTenTacGia(rs.getString("tentacgia"));
 				sach.setTenNxb(rs.getString("tennxb"));
+				sach.setTenTheLoai(rs.getString("tentheloai"));
 				arr.add(sach);
 			}
 			if(arr.size() > 0) return arr.get(0);

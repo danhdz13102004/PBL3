@@ -36,31 +36,55 @@ function showNewestItem() {
 		})
 		.then(data => {
             data.forEach(item => {
-                html += `<div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="card p-3 mb-4">
-                    <a
-                        href="${currentURL}/product?id=${item.id}"
-                        class="img-wrap text-center"> 
-                                <img width="200" height="200" class="img-fluid"
-                                    src="${currentURL}${item.urlImage}"
-                                    alt="">
-                    </a>
-                    <div class="info-wrap mt-2">
+                if(item.phanTramGiamGia === 0) {
+                        html += `<div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="card p-3 mb-4">
                         <a
-                            href="${currentURL}/product?id=${item.id}"
-                            class="title">${item.ten}</a>
-                        <div>
-                                    <span class="price mt-1 fw-bold"> ${formatCurrency(item.giaBan)}
-                                    </span>
-                                    <span class="ms-2 text-muted text-decoration-line-through">
-                                        100.000₫
-                                    </span>
-                                    <span class="ms-2 badge bg-info"> 50%
-                                    </span>
+                            href="${currentURL}/product/detail?id=${item.id}"
+                            class="img-wrap text-center"> 
+                                    <img width="200" height="200" class="img-fluid"
+                                        src="${currentURL}${item.urlImage}"
+                                        alt="">
+                        </a>
+                        <div class="info-wrap mt-2">
+                            <a
+                                href="${currentURL}/product/detail?id=${item.id}"
+                                class="title">${item.ten}</a>
+                            <div>
+                                        <span class="price mt-1 fw-bold"> ${formatCurrency(item.giaBan)}
+                                        </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>`;        
+                </div>`; 
+                }
+                else {
+                        html += `<div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card p-3 mb-4">
+                            <a
+                                href="${currentURL}/product/detail?id=${item.id}"
+                                class="img-wrap text-center"> 
+                                        <img width="200" height="200" class="img-fluid"
+                                            src="${currentURL}${item.urlImage}"
+                                            alt="">
+                            </a>
+                            <div class="info-wrap mt-2">
+                                <a
+                                    href="${currentURL}/product/detail?id=${item.id}"
+                                    class="title">${item.ten}</a>
+                                <div>
+                                            <span class="price mt-1 fw-bold"> ${formatCurrency(item.giaBan * (1 - item.phanTramGiamGia/100))}
+                                            </span>
+                                            <span class="ms-2 text-muted text-decoration-line-through">
+                                                ${formatCurrency(item.giaBan)}
+                                            </span>
+                                            <span class="ms-2 badge bg-info"> ${item.phanTramGiamGia}%
+                                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;        
+                }
             });
 
             document.querySelector(".contain-newest").innerHTML = html;
